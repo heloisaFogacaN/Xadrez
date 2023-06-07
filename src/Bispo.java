@@ -8,7 +8,7 @@ public class Bispo extends Peca{
         int posicaoNoTabuleiro = tabuleiro.getPosicoes().indexOf(posicaoAtual);
         ArrayList<Posicao> possiveisMovimentos = new ArrayList<>();
         for(int i = (posicaoNoTabuleiro %8 == 0 ? 64 : posicaoNoTabuleiro+7); i < tabuleiro.getPosicoes().size(); i+=7){
-            valida(tabuleiro.getPosicoes().get(i));
+            verificaPeca(tabuleiro.getPosicoes().get(i), possiveisMovimentos);
             if(i%8==0){
                 break;
             }

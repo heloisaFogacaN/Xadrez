@@ -9,6 +9,10 @@ public abstract class Peca {
         return posicao;
     }
 
+    public String getCor() {
+        return cor;
+    }
+
     public void mover(Tabuleiro tabuleiro, Posicao posicao){
         ArrayList<Posicao> possiveisPosicoes = possiveisMovimentos(tabuleiro);
         for(Posicao posicaoPossivel: possiveisPosicoes){
@@ -24,6 +28,17 @@ public abstract class Peca {
         }
 
 
+    }
+    public boolean verificaPeca(Posicao posicao, ArrayList<Posicao> possiveisMovimentos) {
+        if(posicao.getPeca()==null){
+            possiveisMovimentos.add(posicao);
+            return false;
+        } else {
+            if (!posicao.getPeca().getCor().equals(this.getCor())){
+                possiveisMovimentos.add(posicao);
+            }
+        }
+            return true;
     }
     public abstract ArrayList<Posicao> possiveisMovimentos(Tabuleiro tabuleiro);
 

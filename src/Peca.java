@@ -5,6 +5,10 @@ public abstract class Peca {
     private String cor;
     private Posicao posicao;
 
+    public Peca(String cor){
+        super(cor);
+    }
+
     public Posicao getPosicao() {
         return posicao;
     }
@@ -39,6 +43,10 @@ public abstract class Peca {
             }
         }
             return true;
+    }
+
+    public boolean validaExtremidade(int posicaoNoTabuleiro){
+        return posicaoNoTabuleiro % 8 == 0;
     }
     public abstract ArrayList<Posicao> possiveisMovimentos(Tabuleiro tabuleiro);
 

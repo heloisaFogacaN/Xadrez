@@ -9,15 +9,15 @@ public class Jogador {
 
     public boolean moverPeca(
             Peca peca,
-            Posicao posicao){
+            Posicao posicao) {
         return true;
     }
 
-    public boolean proporEmpate(
-            Jogador jogador){
+    public boolean proporEmpate(Jogador jogador) {
         return true;
     }
-    public void desistir(){
+
+    public void desistir() {
 
     }
 

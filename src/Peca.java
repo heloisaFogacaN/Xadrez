@@ -56,4 +56,12 @@ public abstract class Peca {
     public String getCor() {
         return cor;
     }
+
+    @Override
+    public String toString() {
+        return "Peca{" +
+                "cor='" + cor + '\'' +
+                ", posicao=" + posicao +
+                '}';
+    }
 }

@@ -6,6 +6,17 @@ public class Cavalo extends Peca {
         super(cor);
     }
 
+//    @Override
+//    public String toString() {
+//        return "Cavalo";
+//    }
+
+
+    @Override
+    public String toString() {
+        return "Cavalo "+super.toString();
+    }
+
     @Override
     public ArrayList<Posicao> possiveisMovimento(Tabuleiro tabuleiro) {
         ArrayList<Posicao> possiveisMovimentos = new ArrayList<>();

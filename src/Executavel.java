@@ -14,6 +14,7 @@ public class Executavel {
         System.out.println(j1.getPecas());
         int escolhaPeca = scanner.nextInt();
         Peca peca = j1.getPecas().get(escolhaPeca);
+        System.out.println(peca);
         // Escolha da posição para o movimento
         System.out.println(peca.possiveisMovimento((tabuleiro)));
         ArrayList<Posicao> posicoes = peca.possiveisMovimento(tabuleiro);

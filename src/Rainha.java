@@ -60,5 +60,10 @@ public class Rainha extends Peca{
 
         return possiveisMovimentos;
     }
+
+    @Override
+    public String toString() {
+        return "Rainha "+super.toString();
+    }
 }
 

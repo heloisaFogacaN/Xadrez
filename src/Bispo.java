@@ -1,6 +1,15 @@
 import java.util.ArrayList;
 
 public class Bispo extends Peca{
+//    @Override
+//    public String toString() {
+//        return "Bispo";
+//    }
+
+    @Override
+    public String toString() {
+        return "Bispo " + super.toString();
+    }
 
     public Bispo(String cor) {
         super(cor);

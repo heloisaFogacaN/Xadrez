@@ -2,8 +2,12 @@ import java.util.ArrayList;
 
 public class Bispo extends Peca{
 
+    public Bispo(String cor) {
+        super(cor);
+    }
+
     @Override
-    public ArrayList<Posicao> possiveisMovimentos(Tabuleiro tabuleiro) {
+    public ArrayList<Posicao> possiveisMovimento(Tabuleiro tabuleiro) {
         Posicao posicaoAtual= this.getPosicao();
         int posicaoNoTabuleiro = tabuleiro.getPosicoes().indexOf(posicaoAtual);
         ArrayList<Posicao> possiveisMovimentos = new ArrayList<>();
@@ -34,6 +38,6 @@ public class Bispo extends Peca{
 
         return possiveisMovimentos;
     }
-
-
 }
+
+

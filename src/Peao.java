@@ -8,9 +8,8 @@ public class Peao extends Peca {
         super(cor);
     }
 
-
     @Override
-    public ArrayList<Posicao> possiveisMovimentos(Tabuleiro tabuleiro) {
+    public ArrayList<Posicao> possiveisMovimento(Tabuleiro tabuleiro) {
         ArrayList<Posicao> possiveisMovimentos = new ArrayList<>();
         Posicao posicaoAtual = this.getPosicao();
         int posicaoNoTabuleiro = tabuleiro.getPosicoes().indexOf(posicaoAtual);
@@ -54,3 +53,5 @@ public class Peao extends Peca {
         return possiveisMovimentos;
     }
 }
+
+

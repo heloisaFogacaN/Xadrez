@@ -1,8 +1,11 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+
 public class Executavel {
+    static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+
         Jogador j1 = new Jogador("Jorge", "Senh@123");
         Jogador j2 = new Jogador("Wilson", "Wilson");
 
@@ -11,33 +14,45 @@ public class Executavel {
         j1.setCor("Branco", tabuleiro);
         j2.setCor("Preto", tabuleiro);
 
-        boolean continuarJogo=true;
+        boolean continuarJogo = true;
 
-        do{
+        do {
             //Escolha da peça
             mostrarTabuleiro(tabuleiro);
             System.out.println("Escolha a peça que você deseja:");
             System.out.println(j1.getPecas());
             int escolhaPeca = scanner.nextInt();
-            Peca peca = tabuleiro.getPosicoes().get(escolhaPeca).getPeca();
-            j1.getPecas().contains(peca);
-            System.out.println(peca);
-            // Escolha da posição para o movimento
-            System.out.println("Suas posíveis movimentações são:");
-            System.out.println(peca.possiveisMovimento((tabuleiro)));
-            ArrayList<Posicao> posicoes = peca.possiveisMovimento(tabuleiro);
-            System.out.println(posicoes);
-            int escolhaPosicao = scanner.nextInt();
-            Posicao movimentarPeca = tabuleiro.getPosicoes().get(escolhaPosicao);
-            for (Posicao posicao : posicoes) {
-                if(posicao.equals(movimentarPeca)){
-                    //Movimentação da peça escolhida para a posição desejada
-                    j1.moverPeca(peca, movimentarPeca, tabuleiro, j2);
-                    System.out.println(validarVitoria(j2));
-                }
-            }
-        } while(continuarJogo);
 
+            System.out.println(j1.getCor() + "Cor do jogador 1");
+            System.out.println(tabuleiro.getPosicoes().get(escolhaPeca).getPeca().getCor() + " a cor da peça escolhida");
+
+            Peca peca = tabuleiro.getPosicoes().get(escolhaPeca).getPeca();
+//            j1.getPecas().contains(peca);
+//            System.out.println(peca);
+            if(j1.getPecas().contains(peca)){
+                // Escolha da posição para o movimento
+                System.out.println("Suas posíveis movimentações são:");
+                ArrayList<Posicao> posicoes = peca.possiveisMovimento(tabuleiro);
+                int i = 0;
+                for (Posicao posicao : posicoes) {
+                    i++;
+                    System.out.println(tabuleiro.getPosicoes().indexOf(posicao));
+                }
+                int escolhaPosicao = scanner.nextInt();
+                Posicao movimentarPeca = tabuleiro.getPosicoes().get(escolhaPosicao);
+                for (Posicao posicao : posicoes) {
+                    if (posicao.equals(movimentarPeca)) {
+                        //Movimentação da peça escolhida para a posição desejada
+                        j1.moverPeca(peca, movimentarPeca, tabuleiro, j2);
+                        System.out.println(validarVitoria(j2));
+                    }
+                }
+            } else if(j1.getPecas().get(escolhaPeca).getCor() != j1.getCor() && !j1.getPecas().contains(peca)){
+                System.out.println("Essa peça é inválida!");
+
+            }
+
+        } while (continuarJogo);
 
     }
 
@@ -50,6 +65,7 @@ public class Executavel {
         }
         return true;
     }
+
     public static void mostrarTabuleiro(Tabuleiro tabuleiro) {
         int posicao = 0;
 
@@ -72,9 +88,3 @@ public class Executavel {
         posicao = 0;
     }
 }
-
-
-
-
-
-

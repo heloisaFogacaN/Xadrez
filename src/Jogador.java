@@ -24,7 +24,7 @@ public class Jogador {
 
     public void setCor(String cor, Tabuleiro tabuleiro) {
         this.cor = cor;
-        for(Posicao posicao: tabuleiro.getPosicoes()){
+        for(Posicao posicao : tabuleiro.getPosicoes()){
             if(posicao.getPeca() != null && posicao.getPeca().getCor().equals(this.cor)){
                 this.pecas.add( posicao.getPeca());
             }

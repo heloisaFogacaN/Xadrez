@@ -63,7 +63,7 @@ public class Rainha extends Peca{
 
     @Override
     public String toString() {
-        return "R";
+        return "RA";
     }
 }
 

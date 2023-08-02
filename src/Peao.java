@@ -4,8 +4,8 @@ public class Peao extends Peca {
 
     private boolean primMov = true;
 
-    public Peao(String cor){
-        super(cor);
+    public Peao(String cor, Posicao posicao) {
+        super(cor, posicao);
     }
 
     @Override
@@ -19,21 +19,25 @@ public class Peao extends Peca {
             if(posicoesTabuleiro.get(posicaoNoTabuleiro+8).getPeca() ==null) {
                 possiveisMovimentos.add(posicoesTabuleiro.get(posicaoNoTabuleiro + 8));
                 if (this.primMov) {
-                    if (posicoesTabuleiro.get(posicaoNoTabuleiro + 16).getPeca() == null) {
+                    if (posicoesTabuleiro.get(posicaoNoTabuleiro+16).getPeca() != null &&
+                            posicoesTabuleiro.get(posicaoNoTabuleiro + 16).getPeca() == null) {
                         possiveisMovimentos.add(posicoesTabuleiro.get(posicaoNoTabuleiro + 16));
                     }
                 }
             }
-            if (posicoesTabuleiro.get(posicaoNoTabuleiro+9).getPeca().getCor().equals("Branco") && !validaExtremidade(posicaoNoTabuleiro+1)){
+            if (posicoesTabuleiro.get(posicaoNoTabuleiro+9).getPeca() != null &&
+                    posicoesTabuleiro.get(posicaoNoTabuleiro+9).getPeca().getCor().equals("Branco") && !validaExtremidade(posicaoNoTabuleiro+1)){
                 possiveisMovimentos.add(posicoesTabuleiro.get(posicaoNoTabuleiro+9));
 
             }
-            if (posicoesTabuleiro.get(posicaoNoTabuleiro+7).getPeca().getCor().equals("Branco") && !validaExtremidade(posicaoNoTabuleiro)){
+            if (posicoesTabuleiro.get(posicaoNoTabuleiro+7).getPeca() != null &&
+                    posicoesTabuleiro.get(posicaoNoTabuleiro+7).getPeca().getCor().equals("Branco") && !validaExtremidade(posicaoNoTabuleiro)){
                 possiveisMovimentos.add(posicoesTabuleiro.get(posicaoNoTabuleiro+7));
 
             }
         } else{
-            if(posicoesTabuleiro.get(posicaoNoTabuleiro-8).getPeca() == null) {
+            if(posicoesTabuleiro.get(posicaoNoTabuleiro-8).getPeca() != null &&
+                    posicoesTabuleiro.get(posicaoNoTabuleiro-8).getPeca() == null) {
                 possiveisMovimentos.add(posicoesTabuleiro.get(posicaoNoTabuleiro - 8));
                 if (this.primMov) {
                     if (tabuleiro.getPosicoes().get(posicaoNoTabuleiro - 16) .getPeca() == null) {
@@ -41,11 +45,13 @@ public class Peao extends Peca {
                     }
                 }
             }
-            if (posicoesTabuleiro.get(posicaoNoTabuleiro-9).getPeca().getCor().equals("Preto")  && posicaoNoTabuleiro % 8 != 0){
+            if (posicoesTabuleiro.get(posicaoNoTabuleiro-9).getPeca() != null &&
+                    posicoesTabuleiro.get(posicaoNoTabuleiro-9).getPeca().getCor().equals("Preto")  && posicaoNoTabuleiro % 8 != 0){
                 possiveisMovimentos.add(posicoesTabuleiro.get(posicaoNoTabuleiro-9));
 
             }
-            if (posicoesTabuleiro.get(posicaoNoTabuleiro-7).getPeca().getCor().equals("Preto")  && (posicaoNoTabuleiro + 1) % 8 != 0){
+            if (posicoesTabuleiro.get(posicaoNoTabuleiro-7).getPeca() != null &&
+                    posicoesTabuleiro.get(posicaoNoTabuleiro-7).getPeca().getCor().equals("Preto")  && (posicaoNoTabuleiro + 1) % 8 != 0){
                 possiveisMovimentos.add(posicoesTabuleiro.get(posicaoNoTabuleiro-7));
 
             }
@@ -55,9 +61,7 @@ public class Peao extends Peca {
 
     @Override
     public String toString() {
-        return "Peao{" +
-                "primMov=" + primMov +
-                ", " + super.toString();
+        return "P";
     }
 }
 

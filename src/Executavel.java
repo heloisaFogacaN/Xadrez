@@ -11,8 +11,8 @@ public class Executavel {
 
         Tabuleiro tabuleiro = new Tabuleiro();
 
-        j1.setCor("Branco", tabuleiro);
-        j2.setCor("Preto", tabuleiro);
+        j1.setCor("Preto", tabuleiro);
+        j2.setCor("Branco", tabuleiro);
 
         boolean continuarJogo = true;
 
@@ -20,16 +20,15 @@ public class Executavel {
             //Escolha da peça
             mostrarTabuleiro(tabuleiro);
             System.out.println("Escolha a peça que você deseja:");
-            System.out.println(j1.getPecas());
             int escolhaPeca = scanner.nextInt();
 
-            System.out.println(j1.getCor() + "Cor do jogador 1");
+            System.out.println(j2.getCor() + "Cor do jogador 2");
             System.out.println(tabuleiro.getPosicoes().get(escolhaPeca).getPeca().getCor() + " a cor da peça escolhida");
 
             Peca peca = tabuleiro.getPosicoes().get(escolhaPeca).getPeca();
 //            j1.getPecas().contains(peca);
 //            System.out.println(peca);
-            if(j1.getPecas().contains(peca)){
+            if(j2.getPecas().contains(peca)) {
                 // Escolha da posição para o movimento
                 System.out.println("Suas posíveis movimentações são:");
                 ArrayList<Posicao> posicoes = peca.possiveisMovimento(tabuleiro);
@@ -43,13 +42,15 @@ public class Executavel {
                 for (Posicao posicao : posicoes) {
                     if (posicao.equals(movimentarPeca)) {
                         //Movimentação da peça escolhida para a posição desejada
-                        j1.moverPeca(peca, movimentarPeca, tabuleiro, j2);
-                        System.out.println(validarVitoria(j2));
+                        j2.moverPeca(peca, movimentarPeca, tabuleiro, j1);
+                        if(peca instanceof Peao && ((Peao) peca).getPrimMov()){
+                            ((Peao) peca).setPrimMov(false);
+                        }
+                        System.out.println(validarVitoria(j1));
                     }
                 }
-            } else if(j1.getPecas().get(escolhaPeca).getCor() != j1.getCor() && !j1.getPecas().contains(peca)){
+            } else {
                 System.out.println("Essa peça é inválida!");
-
             }
 
         } while (continuarJogo);

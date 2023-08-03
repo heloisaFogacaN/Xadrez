@@ -19,7 +19,7 @@ public class Peao extends Peca {
             if(posicoesTabuleiro.get(posicaoNoTabuleiro+8).getPeca() ==null) {
                 possiveisMovimentos.add(posicoesTabuleiro.get(posicaoNoTabuleiro + 8));
                 if (this.primMov) {
-                    if (posicoesTabuleiro.get(posicaoNoTabuleiro+16).getPeca() != null &&
+                    if (posicoesTabuleiro.get(posicaoNoTabuleiro+16).getPeca() == null &&
                             posicoesTabuleiro.get(posicaoNoTabuleiro + 16).getPeca() == null) {
                         possiveisMovimentos.add(posicoesTabuleiro.get(posicaoNoTabuleiro + 16));
                     }
@@ -31,16 +31,17 @@ public class Peao extends Peca {
 
             }
             if (posicoesTabuleiro.get(posicaoNoTabuleiro+7).getPeca() != null &&
-                    posicoesTabuleiro.get(posicaoNoTabuleiro+7).getPeca().getCor().equals("Branco") && !validaExtremidade(posicaoNoTabuleiro)){
+                    posicoesTabuleiro.get(posicaoNoTabuleiro+7).getPeca().getCor().equals("Branco") && !validaExtremidade(posicaoNoTabuleiro) &&
+                    posicoesTabuleiro.get(posicaoNoTabuleiro+15) == null){
                 possiveisMovimentos.add(posicoesTabuleiro.get(posicaoNoTabuleiro+7));
 
             }
         } else{
-            if(posicoesTabuleiro.get(posicaoNoTabuleiro-8).getPeca() != null &&
-                    posicoesTabuleiro.get(posicaoNoTabuleiro-8).getPeca() == null) {
+            if(posicoesTabuleiro.get(posicaoNoTabuleiro-8).getPeca() ==null) {
                 possiveisMovimentos.add(posicoesTabuleiro.get(posicaoNoTabuleiro - 8));
                 if (this.primMov) {
-                    if (tabuleiro.getPosicoes().get(posicaoNoTabuleiro - 16) .getPeca() == null) {
+                    if (posicoesTabuleiro.get(posicaoNoTabuleiro-16).getPeca() == null &&
+                            posicoesTabuleiro.get(posicaoNoTabuleiro - 16).getPeca() == null) {
                         possiveisMovimentos.add(posicoesTabuleiro.get(posicaoNoTabuleiro - 16));
                     }
                 }
@@ -57,6 +58,14 @@ public class Peao extends Peca {
             }
         }
         return possiveisMovimentos;
+    }
+
+    public boolean getPrimMov() {
+        return primMov;
+    }
+
+    public void setPrimMov(boolean primMov) {
+        this.primMov = primMov;
     }
 
     @Override

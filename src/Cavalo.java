@@ -26,33 +26,41 @@ public class Cavalo extends Peca {
         for (Posicao posicao : tabuleiro.getPosicoes()) {
             int indice = tabuleiro.getPosicoes().indexOf(posicao);
             if (indice == posicaoNoTabuleiro - 17 ||
+                    indice == posicaoNoTabuleiro - 15 ||
                     indice == posicaoNoTabuleiro - 10 ||
                     indice == posicaoNoTabuleiro - 6 ||
                     indice == posicaoNoTabuleiro + 6 ||
                     indice == posicaoNoTabuleiro + 10 ||
+                    indice == posicaoNoTabuleiro + 15 ||
                     indice == posicaoNoTabuleiro + 17) {
+
                 if (validaExtremidade(posicaoNoTabuleiro + 1)) {
                     //coluna H
-                    if (indice== posicaoNoTabuleiro-15||
-                            indice== posicaoNoTabuleiro-6||
-                            indice== posicaoNoTabuleiro+10||
-                            indice== posicaoNoTabuleiro+17
-                    ){
-                        verificaPeca(posicao, possiveisMovimentos);
+                    if (validaExtremidade(posicaoNoTabuleiro - 1)) {
+                        if (indice == posicaoNoTabuleiro - 15 ||
+                                indice == posicaoNoTabuleiro - 6 ||
+                                indice == posicaoNoTabuleiro + 10 ||
+                                indice == posicaoNoTabuleiro + 17 ||
+                                indice == posicaoNoTabuleiro + 15 ||
+                                indice == posicaoNoTabuleiro - 17) {
+
+                            verificaPeca(posicao, possiveisMovimentos);
+                        }
+                    } else if (validaExtremidade(posicaoNoTabuleiro - 1)) {
                         //coluna B
-                    } else if (!(indice == posicaoNoTabuleiro - 17 ||
-                            indice == posicaoNoTabuleiro - 10 ||
-                            indice == posicaoNoTabuleiro + 6 ||
-                            indice == posicaoNoTabuleiro + 15 ||
-                            indice == posicaoNoTabuleiro - 15)) {
-                        verificaPeca(posicao, possiveisMovimentos);
+                        if (!(indice == posicaoNoTabuleiro - 17 ||
+                                indice == posicaoNoTabuleiro - 10 ||
+                                indice == posicaoNoTabuleiro + 6 ||
+                                indice == posicaoNoTabuleiro + 15)) {
+                            verificaPeca(posicao, possiveisMovimentos);
+                        }
                     }
                 } else if (validaExtremidade(posicaoNoTabuleiro)) {
                     //coluna A
-                    if (!(indice == posicaoNoTabuleiro-17 ||
-                            indice == posicaoNoTabuleiro-10||
-                            indice == posicaoNoTabuleiro+6 ||
-                            indice == posicaoNoTabuleiro+15)){
+                    if (!(indice == posicaoNoTabuleiro - 17 ||
+                            indice == posicaoNoTabuleiro - 10 ||
+                            indice == posicaoNoTabuleiro + 6 ||
+                            indice == posicaoNoTabuleiro + 15)) {
                         verificaPeca(posicao, possiveisMovimentos);
 
                     }
@@ -67,7 +75,6 @@ public class Cavalo extends Peca {
                         verificaPeca(posicao, possiveisMovimentos);
 
                     }
-
 
                     // não é do canto
                 } else {

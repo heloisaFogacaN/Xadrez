@@ -29,7 +29,7 @@ public class Bispo extends Peca{
                 break;
             }
         }
-        for(int i = (validaExtremidade(posicaoNoTabuleiro) ? -1 : posicaoNoTabuleiro+7); i >= 0; i-=9){
+        for(int i = (validaExtremidade(posicaoNoTabuleiro) ? -1 : posicaoNoTabuleiro-7); i >= 0; i-=9){
             possiveisMovimentos.add(tabuleiro.getPosicoes().get(i));
             if(verificaPeca(tabuleiro.getPosicoes().get(i), possiveisMovimentos) ||  validaExtremidade(i)){
                 break;

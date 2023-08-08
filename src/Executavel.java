@@ -5,6 +5,7 @@ public class Executavel {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+//        menu();
 
         Jogador j1 = new Jogador("Jorge", "Senh@123");
         Jogador j2 = new Jogador("Wilson", "Wilson");
@@ -24,6 +25,7 @@ public class Executavel {
 
             System.out.println(j2.getCor() + "Cor do jogador 2");
             System.out.println(tabuleiro.getPosicoes().get(escolhaPeca).getPeca().getCor() + " a cor da peça escolhida");
+            System.out.println(tabuleiro.getPosicoes().get(escolhaPeca).getPeca() + " peça escolhida");
 
             Peca peca = tabuleiro.getPosicoes().get(escolhaPeca).getPeca();
             if (j2.getPecas().contains(peca)) {
@@ -54,6 +56,32 @@ public class Executavel {
         } while (continuarJogo);
 
     }
+
+//    private static void menu() {
+//        System.out.println("""
+//                BEM-VINDO!
+//
+//                Selecione uma das opções:
+//
+//                1 - Cadastrar jogadores
+//                2 - Começar o jogo
+//                """);
+//        int opcao=scanner.nextInt();
+//
+//        switch (opcao){
+//            case 1:
+//                cadastrarJogadores();
+//                break;
+//            case 2:
+//                jogar();
+//        }
+//    }
+//
+//    private static void cadastrarJogadores() {
+//    }
+//    private static void jogar() {
+//    }
+
 
     private static boolean validarVitoria(Jogador adversario) {
         for (Peca peca : adversario.getPecas()) {

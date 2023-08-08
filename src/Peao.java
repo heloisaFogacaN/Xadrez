@@ -52,8 +52,7 @@ public class Peao extends Peca {
 
             }
             if (posicoesTabuleiro.get(posicaoNoTabuleiro-7).getPeca() != null &&
-                    posicoesTabuleiro.get(posicaoNoTabuleiro-7).getPeca().getCor().equals("Preto")  && (posicaoNoTabuleiro + 1) % 8 != 0 &&
-                    posicoesTabuleiro.get(posicaoNoTabuleiro-14) == null){
+                    posicoesTabuleiro.get(posicaoNoTabuleiro-7).getPeca().getCor().equals("Preto")  && (posicaoNoTabuleiro + 1) % 8 != 0){
                 possiveisMovimentos.add(posicoesTabuleiro.get(posicaoNoTabuleiro-7));
 
             }

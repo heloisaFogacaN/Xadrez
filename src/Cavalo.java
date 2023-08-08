@@ -5,7 +5,7 @@ public class Cavalo extends Peca {
     public Cavalo(String cor, Posicao posicao) {
         super(cor, posicao);
     }
-    
+
 
     @Override
     public String toString() {
@@ -44,7 +44,7 @@ public class Cavalo extends Peca {
 
                     if (!(
                             indice == posicaoNoTabuleiro - 10 ||
-                            indice == posicaoNoTabuleiro + 6 )) {
+                                    indice == posicaoNoTabuleiro + 6 )) {
                         verificaPeca(posicao, possiveisMovimentos);
                     }
                 }

@@ -5,12 +5,7 @@ public class Cavalo extends Peca {
     public Cavalo(String cor, Posicao posicao) {
         super(cor, posicao);
     }
-
-//    @Override
-//    public String toString() {
-//        return "Cavalo";
-//    }
-
+    
 
     @Override
     public String toString() {

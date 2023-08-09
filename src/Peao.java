@@ -70,14 +70,13 @@ public class Peao extends Peca {
         this.primMov = primMov;
     }
 
-//    public boolean promoverPeao(Posicao posicao, Peao peca) {
-//        for(int i=0;i<64;i++){
-//            if(peca.getPosicao()=8 && peca.getPosicao() <= 15){
-//
-//            }
-//        }
-//        return false;
-//    }
+    public boolean promoverPeao(Posicao posicao, Peao peca, Tabuleiro tabuleiro) {
+      if(tabuleiro.getPosicoes().indexOf(this.posicao) <=7 || tabuleiro.getPosicoes().indexOf(this.posicao) > 0 ){
+
+      }
+
+        return false;
+    }
 
     @Override
     public String toString() {

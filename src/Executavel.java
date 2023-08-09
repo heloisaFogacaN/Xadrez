@@ -47,7 +47,7 @@ public class Executavel {
                             if (((Peao) peca).getPrimMov()) {
                                 ((Peao) peca).setPrimMov(false);
                             }
-                            boolean promover = Peao.promoverPeao(posicao, peca, tabuleiro);
+                            boolean promover = ((Peao) peca).promoverPeao(tabuleiro);
                         }
                         System.out.println(validarVitoria(j1));
                     }

@@ -70,11 +70,10 @@ public class Peao extends Peca {
         this.primMov = primMov;
     }
 
-    public boolean promoverPeao(Posicao posicao, Peao peca, Tabuleiro tabuleiro) {
-      if(tabuleiro.getPosicoes().indexOf(this.getPosicao()) <=7 || tabuleiro.getPosicoes().indexOf(this.getPosicao()) > 0 ){
-
+    public boolean promoverPeao( Tabuleiro tabuleiro) {
+      if(tabuleiro.getPosicoes().indexOf(this.getPosicao()) <=7 || tabuleiro.getPosicoes().indexOf(this.getPosicao()) >= 0 ){
+          return true;
       }
-
         return false;
     }
 

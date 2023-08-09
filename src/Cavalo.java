@@ -47,7 +47,6 @@ public class Cavalo extends Peca {
                 }
                 // coluna G
                 else if (validaExtremidade(posicaoNoTabuleiro + 2)) {
-                    System.out.println("to no G");
                     if (!(indice == posicaoNoTabuleiro - 6 ||
                             indice == posicaoNoTabuleiro + 10)) {
                         verificaPeca(posicao, possiveisMovimentos);

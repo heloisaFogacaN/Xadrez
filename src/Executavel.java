@@ -5,7 +5,7 @@ public class Executavel {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-//        menu();
+        menu();
 
         Jogador j1 = new Jogador("Jorge", "Senh@123");
         Jogador j2 = new Jogador("Wilson", "Wilson");
@@ -43,8 +43,11 @@ public class Executavel {
                     if (posicao.equals(movimentarPeca)) {
                         //Movimentação da peça escolhida para a posição desejada
                         j2.moverPeca(peca, movimentarPeca, tabuleiro, j1);
-                        if (peca instanceof Peao && ((Peao) peca).getPrimMov()) {
-                            ((Peao) peca).setPrimMov(false);
+                        if (peca instanceof Peao) {
+                            if (((Peao) peca).getPrimMov()) {
+                                ((Peao) peca).setPrimMov(false);
+                            }
+//                            boolean promover = Peao.promoverPeao();
                         }
                         System.out.println(validarVitoria(j1));
                     }
@@ -57,30 +60,35 @@ public class Executavel {
 
     }
 
-//    private static void menu() {
-//        System.out.println("""
-//                BEM-VINDO!
-//
-//                Selecione uma das opções:
-//
-//                1 - Cadastrar jogadores
-//                2 - Começar o jogo
-//                """);
-//        int opcao=scanner.nextInt();
-//
-//        switch (opcao){
-//            case 1:
-//                cadastrarJogadores();
-//                break;
-//            case 2:
-//                jogar();
-//        }
-//    }
-//
-//    private static void cadastrarJogadores() {
-//    }
-//    private static void jogar() {
-//    }
+    private static void menu() {
+        System.out.println("""
+                BEM-VINDO!
+
+                Selecione uma das opções:
+
+                1 - Cadastrar jogador
+                2 - Começar o jogo
+                """);
+        int opcao=scanner.nextInt();
+
+        switch (opcao){
+            case 1:
+                cadastrarJogadores();
+                break;
+            case 2:
+                break;
+        }
+    }
+
+    private static void cadastrarJogadores() {
+        Jogador jogador = null;
+        System.out.println("Informe seu nome:");
+        jogador.setNome(scanner.next());
+        System.out.println("Informe sua senha:");
+        jogador.setSenha(scanner.next());
+    }
+    private static void jogar() {
+    }
 
 
     private static boolean validarVitoria(Jogador adversario) {

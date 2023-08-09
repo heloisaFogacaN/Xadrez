@@ -8,6 +8,7 @@ public class Peao extends Peca {
         super(cor, posicao);
     }
 
+
     @Override
     public ArrayList<Posicao> possiveisMovimento(Tabuleiro tabuleiro) {
         ArrayList<Posicao> possiveisMovimentos = new ArrayList<>();
@@ -60,6 +61,7 @@ public class Peao extends Peca {
         return possiveisMovimentos;
     }
 
+
     public boolean getPrimMov() {
         return primMov;
     }
@@ -67,6 +69,15 @@ public class Peao extends Peca {
     public void setPrimMov(boolean primMov) {
         this.primMov = primMov;
     }
+
+//    public boolean promoverPeao(Posicao posicao, Peao peca) {
+//        for(int i=0;i<64;i++){
+//            if(peca.getPosicao()=8 && peca.getPosicao() <= 15){
+//
+//            }
+//        }
+//        return false;
+//    }
 
     @Override
     public String toString() {

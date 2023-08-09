@@ -71,7 +71,7 @@ public class Peao extends Peca {
     }
 
     public boolean promoverPeao(Posicao posicao, Peao peca, Tabuleiro tabuleiro) {
-      if(tabuleiro.getPosicoes().indexOf(this.posicao) <=7 || tabuleiro.getPosicoes().indexOf(this.posicao) > 0 ){
+      if(tabuleiro.getPosicoes().indexOf(this.getPosicao()) <=7 || tabuleiro.getPosicoes().indexOf(this.getPosicao()) > 0 ){
 
       }
 

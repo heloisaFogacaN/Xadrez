@@ -21,8 +21,6 @@ public abstract class Peca {
             }
             return true;
         }
-
-
     }
 
     public boolean mover(Tabuleiro tabuleiro, Posicao posicao) {

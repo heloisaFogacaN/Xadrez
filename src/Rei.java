@@ -55,6 +55,6 @@ public class Rei extends Peca {
 
     @Override
     public String toString() {
-        return "RE";
+        return "H";
     }
 }

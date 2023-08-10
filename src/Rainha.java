@@ -14,7 +14,7 @@ public class Rainha extends Peca{
         ArrayList<Posicao> possiveisMovimentos = new ArrayList<>();
 
         for(int i = (validaExtremidade(posicaoNoTabuleiro) ? 64 : posicaoNoTabuleiro+7); i < tabuleiro.getPosicoes().size(); i+=7){
-            if(validaExtremidade(i)  ||verificaPeca(tabuleiro.getPosicoes().get(i), possiveisMovimentos)){
+            if (verificaPeca(tabuleiro.getPosicoes().get(i),possiveisMovimentos)||validaExtremidade( i)) {
                 break;
             }
         }
@@ -25,13 +25,13 @@ public class Rainha extends Peca{
                 break;
             }
         }
-        for(int i = (validaExtremidade(posicaoNoTabuleiro+1) ? 64 : posicaoNoTabuleiro+7) ; i < tabuleiro.getPosicoes().size(); i+=9){
+        for(int i = (validaExtremidade(posicaoNoTabuleiro+1) ? 64 : posicaoNoTabuleiro+9) ; i < tabuleiro.getPosicoes().size(); i+=9){
             possiveisMovimentos.add(tabuleiro.getPosicoes().get(i));
             if(verificaPeca(tabuleiro.getPosicoes().get(i) , possiveisMovimentos) || validaExtremidade(i+1)){
                 break;
             }
         }
-        for(int i = (validaExtremidade(posicaoNoTabuleiro) ? -1 : posicaoNoTabuleiro+7); i >= 0; i-=9){
+        for(int i = (validaExtremidade(posicaoNoTabuleiro) ? -1 : posicaoNoTabuleiro-9); i >= 0; i-=9){
             possiveisMovimentos.add(tabuleiro.getPosicoes().get(i));
             if(verificaPeca(tabuleiro.getPosicoes().get(i), possiveisMovimentos) ||  validaExtremidade(i)){
                 break;
@@ -57,13 +57,14 @@ public class Rainha extends Peca{
                 break;
             }
         }
+        
 
         return possiveisMovimentos;
     }
 
     @Override
     public String toString() {
-        return "RA";
+        return "M";
     }
 }
 

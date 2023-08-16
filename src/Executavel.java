@@ -23,8 +23,6 @@ public class Executavel {
             System.out.println("Escolha a peça que você deseja:");
             int escolhaPeca = scanner.nextInt();
 
-            System.out.println(j2.getCor() + "Cor do jogador 2");
-            System.out.println(tabuleiro.getPosicoes().get(escolhaPeca).getPeca().getCor() + " a cor da peça escolhida");
             System.out.println(tabuleiro.getPosicoes().get(escolhaPeca).getPeca() + " peça escolhida");
 
             Peca peca = tabuleiro.getPosicoes().get(escolhaPeca).getPeca();
@@ -48,6 +46,9 @@ public class Executavel {
                                 ((Peao) peca).setPrimMov(false);
                             }
                             boolean promover = ((Peao) peca).promoverPeao(tabuleiro);
+                            if (promover) {
+                                promover(peca,tabuleiro,j1, j2);
+                            }
                         }
                         System.out.println(validarVitoria(j1));
                     }
@@ -69,14 +70,16 @@ public class Executavel {
                 1 - Cadastrar jogador
                 2 - Começar o jogo
                 """);
-        int opcao=scanner.nextInt();
+        int opcao = scanner.nextInt();
 
-        switch (opcao){
+        switch (opcao) {
             case 1:
                 cadastrarJogadores();
                 break;
             case 2:
                 break;
+            default:
+                System.out.println("Opção inválida!");
         }
     }
 
@@ -87,9 +90,6 @@ public class Executavel {
         System.out.println("Informe sua senha:");
         jogador.setSenha(scanner.next());
     }
-    private static void jogar() {
-    }
-
 
     private static boolean validarVitoria(Jogador adversario) {
         for (Peca peca : adversario.getPecas()) {
@@ -100,6 +100,40 @@ public class Executavel {
         }
         return true;
     }
+
+    private static void promover(Peca peca, Tabuleiro tabuleiro, Jogador j1, Jogador j2) {
+        System.out.println("""
+                Você deseja promover à qual peça?
+                                
+                1- Rainha
+                2- Torre
+                3- Bispo
+                4- Cavalo
+                """);
+        int opcao = scanner.nextInt();
+
+        Peca pecaPromovida = null;
+
+        switch (opcao) {
+            case 1:
+                pecaPromovida = new Rainha("Branco", peca.getPosicao());
+                break;
+            case 2:
+                pecaPromovida = new Torre("Branco", peca.getPosicao());
+                break;
+            case 3:
+                pecaPromovida = new Bispo("Branco", peca.getPosicao());
+                break;
+            case 4:
+                pecaPromovida = new Cavalo("Branco", peca.getPosicao());
+                break;
+        }
+        tabuleiro.promover(pecaPromovida.getPosicao(), pecaPromovida);
+
+        j2.getPecas().remove(peca);
+        j2.getPecas().add(pecaPromovida);
+    }
+
 
     public static void mostrarTabuleiro(Tabuleiro tabuleiro) {
         int posicao = 0;

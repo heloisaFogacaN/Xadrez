@@ -3,9 +3,10 @@ import java.util.Scanner;
 
 public class Executavel {
     static Scanner scanner = new Scanner(System.in);
+    static Jogador jogador = null;
+    static Jogador adversario = null;
 
     public static void main(String[] args) {
-        menu();
 
         Jogador j1 = new Jogador("Jorge", "Senh@123");
         Jogador j2 = new Jogador("Wilson", "Wilson");
@@ -22,9 +23,7 @@ public class Executavel {
             mostrarTabuleiro(tabuleiro);
             System.out.println("Escolha a peça que você deseja:");
             int escolhaPeca = scanner.nextInt();
-
-            System.out.println(tabuleiro.getPosicoes().get(escolhaPeca).getPeca() + " peça escolhida");
-
+            
             Peca peca = tabuleiro.getPosicoes().get(escolhaPeca).getPeca();
             if (j2.getPecas().contains(peca)) {
                 // Escolha da posição para o movimento
@@ -47,7 +46,7 @@ public class Executavel {
                             }
                             boolean promover = ((Peao) peca).promoverPeao(tabuleiro);
                             if (promover) {
-                                promover(peca,tabuleiro,j1, j2);
+                                promover(peca, tabuleiro, j1, j2);
                             }
                         }
                         System.out.println(validarVitoria(j1));
@@ -134,7 +133,6 @@ public class Executavel {
         j2.getPecas().add(pecaPromovida);
     }
 
-
     public static void mostrarTabuleiro(Tabuleiro tabuleiro) {
         int posicao = 0;
 
@@ -143,9 +141,9 @@ public class Executavel {
                 if (posicao < tabuleiro.getPosicoes().size()) {
                     Peca unidade = tabuleiro.getPosicoes().get(posicao).getPeca();
                     if (unidade != null) {
-                        System.out.print("|" + unidade + "| ");
+                        System.out.print("[ " + unidade + " ]");
                     } else {
-                        System.out.print("| | ");
+                        System.out.print("[   ]");
                     }
                     posicao++;
                 } else {
@@ -156,4 +154,26 @@ public class Executavel {
         }
         posicao = 0;
     }
+
+//    public static void mostrarTabuleiro(Tabuleiro tabuleiro) {
+//        int posicao = 0;
+//
+//        for (int i = 0; i < 8; i++) {
+//            for (int j = 0; j < 8; j++) {
+//                if (posicao < tabuleiro.getPosicoes().size()) {
+//                    Peca unidade = tabuleiro.getPosicoes().get(posicao).getPeca();
+//                    if (unidade != null) {
+//                        System.out.print("|" + unidade + "| ");
+//                    } else {
+//                        System.out.print("| | ");
+//                    }
+//                    posicao++;
+//                } else {
+//                    System.out.print("   ");
+//                }
+//            }
+//            System.out.println();
+//        }
+//        posicao = 0;
+//    }
 }

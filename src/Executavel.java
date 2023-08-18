@@ -5,58 +5,78 @@ public class Executavel {
     static Scanner scanner = new Scanner(System.in);
     static Jogador jogador = null;
     static Jogador adversario = null;
+    static Tabuleiro tabuleiro = new Tabuleiro();
 
     public static void main(String[] args) {
 
         Jogador j1 = new Jogador("Jorge", "Senh@123");
         Jogador j2 = new Jogador("Wilson", "Wilson");
 
-        Tabuleiro tabuleiro = new Tabuleiro();
 
         j1.setCor("Preto", tabuleiro);
         j2.setCor("Branco", tabuleiro);
+
+        jogador = j1;
+        adversario = j2;
+
 
         boolean continuarJogo = true;
 
         do {
             //Escolha da peça
-            mostrarTabuleiro(tabuleiro);
+            mostrarTabuleiro();
             System.out.println("Escolha a peça que você deseja:");
             int escolhaPeca = scanner.nextInt();
-            
-            Peca peca = tabuleiro.getPosicoes().get(escolhaPeca).getPeca();
-            if (j2.getPecas().contains(peca)) {
-                // Escolha da posição para o movimento
-                System.out.println("Suas posíveis movimentações são:");
-                ArrayList<Posicao> posicoes = peca.possiveisMovimento(tabuleiro);
-                int i = 0;
-                for (Posicao posicao : posicoes) {
-                    i++;
-                    System.out.println(tabuleiro.getPosicoes().indexOf(posicao));
-                }
-                int escolhaPosicao = scanner.nextInt();
-                Posicao movimentarPeca = tabuleiro.getPosicoes().get(escolhaPosicao);
-                for (Posicao posicao : posicoes) {
-                    if (posicao.equals(movimentarPeca)) {
-                        //Movimentação da peça escolhida para a posição desejada
-                        j2.moverPeca(peca, movimentarPeca, tabuleiro, j1);
-                        if (peca instanceof Peao) {
-                            if (((Peao) peca).getPrimMov()) {
-                                ((Peao) peca).setPrimMov(false);
-                            }
-                            boolean promover = ((Peao) peca).promoverPeao(tabuleiro);
-                            if (promover) {
-                                promover(peca, tabuleiro, j1, j2);
-                            }
-                        }
-                        System.out.println(validarVitoria(j1));
-                    }
-                }
-            } else {
+            if (!passada(escolhaPeca)) {
                 System.out.println("Essa peça é inválida!");
             }
-
         } while (continuarJogo);
+    }
+
+    private static boolean passada(int escolhaPeca) {
+        Peca peca = tabuleiro.getPosicoes().get(escolhaPeca).getPeca();
+        if (jogador.getPecas().contains(peca)) {
+            // Escolha da posição para o movimento
+            System.out.println("Suas posíveis movimentações são:");
+            ArrayList<Posicao> posicoes = peca.possiveisMovimento(tabuleiro);
+            int i = 0;
+            for (Posicao posicao : posicoes) {
+                i++;
+                System.out.println(tabuleiro.getPosicoes().indexOf(posicao));
+            }
+            int escolhaPosicao = scanner.nextInt();
+            Posicao movimentarPeca = tabuleiro.getPosicoes().get(escolhaPosicao);
+            for (Posicao posicao : posicoes) {
+                if (posicao.equals(movimentarPeca)) {
+                    //Movimentação da peça escolhida para a posição desejada
+                    jogador.moverPeca(peca, movimentarPeca, tabuleiro, adversario);
+                    primMov(peca);
+                    if (peca instanceof Peao) {
+                        boolean promover = ((Peao) peca).promoverPeao(tabuleiro);
+                        if (promover) {
+                            tabuleiro.promover(peca.getPosicao(), promover(peca));
+                        }
+                    }
+//                    System.out.println(validarVitoria(adversario));
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+    private static void primMov(Peca peca) {
+        if (peca instanceof Peao) {
+            if (((Peao) peca).getPrimMov()) {
+                ((Peao) peca).setPrimMov(false);
+            }
+        } else if (peca instanceof Torre) {
+            if (((Torre) peca).getPrimMov()) {
+                ((Torre) peca).setPrimMov(false);
+            }
+        } else if (peca instanceof Rei) {
+            ((Rei) peca).setPrimMov(false);
+        }
 
     }
 
@@ -100,7 +120,7 @@ public class Executavel {
         return true;
     }
 
-    private static void promover(Peca peca, Tabuleiro tabuleiro, Jogador j1, Jogador j2) {
+    private static Peca promover(Peca peca) {
         System.out.println("""
                 Você deseja promover à qual peça?
                                 
@@ -129,11 +149,12 @@ public class Executavel {
         }
         tabuleiro.promover(pecaPromovida.getPosicao(), pecaPromovida);
 
-        j2.getPecas().remove(peca);
-        j2.getPecas().add(pecaPromovida);
+        jogador.getPecas().remove(peca);
+        jogador.getPecas().add(pecaPromovida);
+        return pecaPromovida;
     }
 
-    public static void mostrarTabuleiro(Tabuleiro tabuleiro) {
+    public static void mostrarTabuleiro() {
         int posicao = 0;
 
         for (int i = 0; i < 8; i++) {

@@ -12,6 +12,13 @@ public class Torre extends Peca {
         Posicao posicaoAtual = this.getPosicao();
         int posicaoNoTabuleiro = tabuleiro.getPosicoes().indexOf(posicaoAtual);
         ArrayList<Posicao> possiveisMovimentos = new ArrayList<>();
+        ArrayList<Posicao> posicoesTabuleiro = tabuleiro.getPosicoes();
+        if(primMov){
+            if (posicoesTabuleiro.get(posicaoNoTabuleiro - 7).getPeca().getCor().equals("Preto")){
+
+            }
+
+        }
 
         for (int i = posicaoNoTabuleiro + 8;
              i < tabuleiro.getPosicoes().size();
@@ -46,6 +53,14 @@ public class Torre extends Peca {
             }
         }
         return possiveisMovimentos;
+    }
+
+    public boolean getPrimMov() {
+        return primMov;
+    }
+
+    public void setPrimMov(boolean primMov) {
+        this.primMov = primMov;
     }
 
     @Override

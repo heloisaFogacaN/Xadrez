@@ -53,6 +53,14 @@ public class Rei extends Peca {
         return possiveisMovimentos;
     }
 
+    public boolean getPrimMov() {
+        return primMov;
+    }
+
+    public void setPrimMov(boolean primMov) {
+        this.primMov = primMov;
+    }
+
     @Override
     public String toString() {
         return "H";
